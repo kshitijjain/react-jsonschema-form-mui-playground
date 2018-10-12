@@ -26,9 +26,8 @@ class App extends Component {
           textFieldB: {
             title: 'Text Field B',
             type: 'string',
-            errorMessages: {  
-              pattern: "Some rubbish",  
-              required: "dfgdfjh"
+            errorMessages: { 
+              required: "This is custom error message for required validation"
             }
           },
 
@@ -44,7 +43,7 @@ class App extends Component {
             type: 'string',
             pattern: '^[+-]?(?!0*[.,]?0+$)[0-9]{0,8}[.,]?[0-9]{1,2}$',
             errorMessages: {  
-              pattern: "Some rubbish"
+              pattern: "This is custom error message for regex pattern validation"
               // required: "dfgdfjh"
             }
           },
@@ -59,54 +58,54 @@ class App extends Component {
             type: 'string'
           },
 
-          // parentField: {
-          //   type: 'string',
-          //   title: 'Parent Field',
-          //   enum: ['kshitij', 'nitesh', 'akash', 'jack']
-          // }
+          parentField: {
+            type: 'string',
+            title: 'Parent Field',
+            enum: ['kshitij', 'nitesh', 'akash', 'jack']
+          }
         },
 
-        // dependencies: {
-        //   parentField: {
-        //     oneOf: [
-        //       {
-        //         properties: {
-        //           parentField: {
-        //             enum: ["nitesh"]
-        //           },
-        //           childNitesh: {
-        //             title: 'Child Nitesh',
-        //             type: 'string'
-        //           }
-        //         }
-        //       },
+        dependencies: {
+          parentField: {
+            oneOf: [
+              {
+                properties: {
+                  parentField: {
+                    enum: ["nitesh"]
+                  },
+                  childNitesh: {
+                    title: 'Child Nitesh',
+                    type: 'string'
+                  }
+                }
+              },
 
-        //       {
-        //         properties: {
-        //           parentField: {
-        //             enum: ['kshitij']
-        //           },
-        //           childKshitij: {
-        //             title: 'Child Kshitij',
-        //             type: 'string'
-        //           }
-        //         }
-        //       },
+              {
+                properties: {
+                  parentField: {
+                    enum: ['kshitij']
+                  },
+                  childKshitij: {
+                    title: 'Child Kshitij',
+                    type: 'string'
+                  }
+                }
+              },
 
-        //       {
-        //         properties: {
-        //           parentField: {
-        //             enum: ['akash', 'jack']
-        //           },
-        //           multipleChild: {
-        //             title: 'Multiple Child',
-        //             type: 'string'
-        //           }
-        //         }
-        //       }
-        //     ]
-        //   }
-        // }
+              {
+                properties: {
+                  parentField: {
+                    enum: ['akash', 'jack']
+                  },
+                  multipleChild: {
+                    title: 'Multiple Child',
+                    type: 'string'
+                  }
+                }
+              }
+            ]
+          }
+        }
       },
       uiSchema: {
         textFieldA: {
